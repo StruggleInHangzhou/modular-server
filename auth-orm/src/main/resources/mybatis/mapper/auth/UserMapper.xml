@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gavel.auth.orm.dao.facade.UserMapper">
+    <resultMap id="BaseResultMap" type="com.gavel.auth.orm.pojo.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_no" jdbcType="VARCHAR" property="userNo"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+        <result column="create_at" jdbcType="TIMESTAMP" property="createAt"/>
+        <result column="update_at" jdbcType="TIMESTAMP" property="updateAt"/>
+        <result column="stateflag" jdbcType="BIGINT" property="stateflag"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="sex" jdbcType="BIT" property="sex"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="identity" jdbcType="VARCHAR" property="identity"/>
+        <result column="simple_name" jdbcType="VARCHAR" property="simpleName"/>
+        <result column="multiple_login" jdbcType="VARCHAR" property="multipleLogin"/>
+        <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin"/>
+        <result column="birthday" jdbcType="DATE" property="birthday"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, user_no, version, create_at, update_at, stateflag, remark, user_name, real_name, 
+    sex, avatar, mobile, email, password, identity, simple_name, multiple_login, last_login, 
+    birthday
+  </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from jh_user_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jh_user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="com.gavel.auth.orm.pojo.User">
+    insert into jh_user_info (id, user_no, version, 
+      create_at, update_at, stateflag, 
+      remark, user_name, real_name, 
+      sex, avatar, mobile, email, 
+      password, identity, simple_name, 
+      multiple_login, last_login, birthday
+      )
+    values (#{id,jdbcType=INTEGER}, #{userNo,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, #{stateflag,jdbcType=BIGINT}, 
+      #{remark,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{avatar,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, #{simpleName,jdbcType=VARCHAR}, 
+      #{multipleLogin,jdbcType=VARCHAR}, #{lastLogin,jdbcType=TIMESTAMP}, #{birthday,jdbcType=DATE}
+      )
+  </insert>
+
+    <insert id="insertSelective" parameterType="com.gavel.auth.orm.pojo.User">
+        insert into jh_user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userNo != null">
+                user_no,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+            <if test="createAt != null">
+                create_at,
+            </if>
+            <if test="updateAt != null">
+                update_at,
+            </if>
+            <if test="stateflag != null">
+                stateflag,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="identity != null">
+                identity,
+            </if>
+            <if test="simpleName != null">
+                simple_name,
+            </if>
+            <if test="multipleLogin != null">
+                multiple_login,
+            </if>
+            <if test="lastLogin != null">
+                last_login,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userNo != null">
+                #{userNo,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=INTEGER},
+            </if>
+            <if test="createAt != null">
+                #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateAt != null">
+                #{updateAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="stateflag != null">
+                #{stateflag,jdbcType=BIGINT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=BIT},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="identity != null">
+                #{identity,jdbcType=VARCHAR},
+            </if>
+            <if test="simpleName != null">
+                #{simpleName,jdbcType=VARCHAR},
+            </if>
+            <if test="multipleLogin != null">
+                #{multipleLogin,jdbcType=VARCHAR},
+            </if>
+            <if test="lastLogin != null">
+                #{lastLogin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.gavel.auth.orm.pojo.User">
+        update jh_user_info
+        <set>
+            <if test="userNo != null">
+                user_no = #{userNo,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=INTEGER},
+            </if>
+            <if test="createAt != null">
+                create_at = #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateAt != null">
+                update_at = #{updateAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="stateflag != null">
+                stateflag = #{stateflag,jdbcType=BIGINT},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=BIT},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="identity != null">
+                identity = #{identity,jdbcType=VARCHAR},
+            </if>
+            <if test="simpleName != null">
+                simple_name = #{simpleName,jdbcType=VARCHAR},
+            </if>
+            <if test="multipleLogin != null">
+                multiple_login = #{multipleLogin,jdbcType=VARCHAR},
+            </if>
+            <if test="lastLogin != null">
+                last_login = #{lastLogin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday,jdbcType=DATE},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.gavel.auth.orm.pojo.User">
+    update jh_user_info
+    set user_no = #{userNo,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      stateflag = #{stateflag,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      simple_name = #{simpleName,jdbcType=VARCHAR},
+      multiple_login = #{multipleLogin,jdbcType=VARCHAR},
+      last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      birthday = #{birthday,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="countByQuery" resultType="java.lang.Integer" parameterType="com.gavel.auth.orm.query.UserQuery">
+        SELECT count(*) from jh_user_info
+        where stateflag=0
+        <if test="mobile!=null">
+            and mobile = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="password!=null">
+            and `password` = #{password,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+</mapper>

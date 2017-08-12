@@ -2,8 +2,8 @@ package com.gavel.auth.orm.dao.impl;
 
 import com.gavel.auth.orm.dao.facade.UserMapper;
 import com.gavel.auth.orm.pojo.User;
+import com.gavel.auth.orm.query.UserQuery;
 import com.gavel.core.base.BaseDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -16,9 +16,6 @@ import org.springframework.stereotype.Repository;
 @Primary
 public class UserMapperImpl extends BaseDao implements UserMapper
 {
-    @Autowired
-    private UserMapper userMapper;
-
     @Override
     public int deleteByPrimaryKey(Integer id)
     {
@@ -53,5 +50,11 @@ public class UserMapperImpl extends BaseDao implements UserMapper
     public int updateByPrimaryKey(User record)
     {
         return super.getSqlSession().getMapper(UserMapper.class).updateByPrimaryKey(record);
+    }
+
+    @Override
+    public int countByQuery(UserQuery query)
+    {
+        return super.getSqlSession().getMapper(UserMapper.class).countByQuery(query);
     }
 }

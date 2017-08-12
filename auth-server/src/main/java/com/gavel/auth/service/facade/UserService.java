@@ -1,4 +1,4 @@
-package com.hzszn.auth.service.facade;
+package com.gavel.auth.service.facade;
 
 import com.gavel.auth.orm.query.UserQuery;
 import com.gavel.core.moudel.ServiceResult;
@@ -11,4 +11,6 @@ import com.gavel.core.moudel.ServiceResult;
 public interface UserService
 {
     ServiceResult userAdd_tx(UserQuery query) throws Exception;
+
+    ServiceResult appLogin(UserQuery query) throws Exception;
 }
